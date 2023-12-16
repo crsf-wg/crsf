@@ -51,14 +51,14 @@ information, status data and binary data (e.g. firmware updates).
 
 ### Between peripherals and control handset
 
-At the handset side, ORCP can be used to communcicate between the
+At the handset side, CRSF can be used to communcicate between the
 handset and various peripherals (sensors, actors) to exchange control
 information, status data and binary data (e.g. firmware updates).
 
 ## Definitions
 
 Throughout this document the term "Autopilot" is used to denote the
-logic engine used to stabilize and controler the movement of an R/C
+logic engine used to stabilize and control the movement of an R/C
 craft, irrespective of the craft type (in aerial models, the Autopilot
 is more often called a Flight Controller. This document avoids the
 usage of a term Flight Controller to explicitly keep the craft type
@@ -86,7 +86,7 @@ and transmitter modules when there is no other possibility.
 
 #### Bit/Byte Order
 
-Data are always transfered with the least significant bit (LSB) first. 
+Data are always transfered with the least significant bit (LSb) first. 
 
 #### Default Bitrate
 
@@ -119,7 +119,7 @@ Where:
   RF module, flight controller, etc).
 
 - Length (8 bits): frame length in bytes not including the first 2
-  fields (destination and lenght). Assuming an empty payload, the
+  fields (destination and length). Assuming an empty payload, the
   minimum value is 2 bytes.
 
 - Type (8 bits): frame type.
@@ -143,7 +143,7 @@ The defined addresses are as follows:
 | `0xEA`  | Handset            |
 | `0xEC`  | Receiver           |
 | `0xEE`  | Transmitter module |
-| `0xC8`  | Flight controller  |
+| `0xC8`  | Autopilot          |
 
 >Please note that `0xC8` seems to be used as well to transmit frames
 >from handset to a transmitter module.
@@ -165,6 +165,9 @@ The defined addresses are as follows:
 | `0x28`     | Ping devices frame    |
 | `0x29`     | Device info           |
 | `0x2A`     | Request settings      |
+| `0x2B`     | Parameter settings    |
+| `0x2C`     | Parameter read        |
+| `0x2D`     | Parameter write       | 
 | `0x32`     | Command               |
 | `0x3A`     | Handset synch         |
 | `0xC8`     | UART sync             |
